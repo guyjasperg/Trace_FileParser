@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "n-readlines": "^1.0.1"
+    "iconv-lite": "^0.6.3",
+    "n-readlines": "^1.0.1",
+    "utf8": "^3.0.0"
   }
 }
