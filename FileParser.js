@@ -2,7 +2,7 @@ const Path = require("path");
 const FS = require("fs")
 const utf8 = require("utf8");
 const iconv = require("iconv-lite");
-
+const spawn = require('child_process').spawn
 
 const nReadlines = require("n-readlines");
 const { get } = require("http");
@@ -13,6 +13,8 @@ let lineNumber = 1;
 let files = [];
 let encoding;
 let currentLine, newBuf;
+
+spawnProcess();
 
 GetFilesFromDirectory("C:\\Diags\\Morrisons\\DD\\Set1\\WMM0056POS116-220709-212710")
 //GetFilesFromDirectory("C:\\Projects\\Trace_FileParser\\Data")
@@ -110,4 +112,12 @@ function getStringEncoding(line) {
     e = 'ascii';
 
   return e;
+}
+
+function spawnProcess() {
+  const cmd = spawn('dir')
+
+  cmd.stdout.on('data', (data) => {
+    console.log('spawnProcess:' + data.toString())
+  })
 }
